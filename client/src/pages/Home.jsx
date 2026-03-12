@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import Aurora from './Aurora';
 
 const Home = () => {
   const observerRef = useRef(null);
@@ -22,6 +23,16 @@ const Home = () => {
   }, []);
 
   const styles = {
+    auroraWrapper: {
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100vh',
+      zIndex: 0,
+      pointerEvents: 'none',
+      background: '#000000',
+    },
     hero: {
       minHeight: '100vh',
       display: 'flex',
@@ -169,13 +180,14 @@ const Home = () => {
 
   return (
     <>
-      {/* Aurora Background - Multiple Layers */}
-      <div className="aurora-container">
-        <div className="aurora" />
-        <div className="aurora-2" />
-        <div className="aurora-3" />
-        <div className="aurora-4" />
-        <div className="aurora-5" />
+      {/* Aurora Background */}
+      <div style={styles.auroraWrapper}>
+        <Aurora
+          colorStops={["#1e3a8a", "#3b82f6", "#0c4a6e"]}
+          amplitude={1.2}
+          blend={0.5}
+          speed={0.5}
+        />
       </div>
 
       {/* Hero */}
